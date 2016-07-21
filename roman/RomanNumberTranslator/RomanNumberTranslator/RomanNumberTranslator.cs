@@ -35,8 +35,20 @@ namespace RomanNumberTranslator
         /// <param name="intNumber">integer arabic decimal number to be converted to Roman number</param>
         public static string To(int intNumber)
         {
+            var romanNumber = new StringBuilder();
 
+            Maping.All((item) => {
+
+                while (intNumber >= item.Key)
+                {
+                    romanNumber.Append(item.Value);
+                    intNumber -= item.Key;
+                }
+
+                return true;
+            });
+
+            return romanNumber.ToString();
         }
-
     }
 }
